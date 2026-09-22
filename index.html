@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Target Rush</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="logo-container">
+                <div class="target-icon">
+                    <div class="ring outer"></div>
+                    <div class="ring inner"></div>
+                    <div class="ring center"></div>
+                </div>
+                <h1>Target <span>Rush</span></h1>
+            </div>
+            
+            <p class="subtitle">Click targets. Build combos. Avoid bombs.</p>
+            
+            <div class="rules">
+                <div class="rule"><div class="target-demo normal"></div> <span class="pts">+1</span></div>
+                <div class="rule"><div class="target-demo small"></div> <span class="pts">+3</span></div>
+                <div class="rule"><div class="target-demo moving"></div> <span class="pts">+5</span></div>
+                <div class="rule"><div class="target-demo bomb"></div> <span class="pts danger">-3</span></div>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="player-name" placeholder="Enter your name" maxlength="15" autocomplete="off">
+            </div>
+            
+            <button id="start-btn" class="primary-btn">Start Game</button>
+            
+            <button id="sound-toggle" class="icon-btn sound-on" title="Toggle Sound">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="sound-icon-on">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="sound-icon-off" style="display: none;">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <header id="hud">
+                <div class="hud-left">
+                    <div class="stat-box">
+                        <span class="label">Score</span>
+                        <span id="score" class="value">0</span>
+                    </div>
+                </div>
+                
+                <div class="timer-box">
+                    <span id="timer">30.0</span>
+                </div>
+                
+                <div class="hud-right">
+                    <div class="stat-box">
+                        <span class="label">Combo</span>
+                        <span id="combo" class="value">x1</span>
+                    </div>
+                </div>
+            </header>
+            
+            <div id="play-area">
+                <!-- Targets are injected here -->
+            </div>
+            
+            <div id="combo-message" class="floating-message hidden">Combo x2!</div>
+        </div>
+
+        <!-- End Screen -->
+        <div id="end-screen" class="screen">
+            <h2>Time's Up!</h2>
+            <h3 id="end-player-name">Player</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="label">Final Score</span>
+                    <span id="final-score" class="value highlight">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="label">Accuracy</span>
+                    <span id="final-accuracy" class="value">0%</span>
+                </div>
+                <div class="stat-card">
+                    <span class="label">Max Combo</span>
+                    <span id="highest-combo" class="value">x1</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="play-again-btn" class="primary-btn">Play Again</button>
+                <button id="home-btn" class="secondary-btn">Home</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
